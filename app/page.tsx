@@ -17,12 +17,12 @@ export default function HomePage() {
                   laws of physics from anywhere.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <Button asChild size="lg" className="bg-white text-blue-700 hover:bg-blue-50">
+                  <Button asChild size="lg" className="border-white text-blue-700 hover:bg-blue-50">
                     <Link href="/experiments">
                       Explore Experiments <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-blue-700">
+                  <Button asChild variant="outline" size="lg" className="border-white text-blue-700 hover:bg-blue-700">
                     <Link href="/about">Learn More</Link>
                   </Button>
                 </div>

@@ -14,6 +14,10 @@ interface ExperimentCardProps {
 export function ExperimentCard({ experiment }: ExperimentCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
+  const handleStartExperiment = () => {
+    window.open(experiment.url, '_blank', 'noopener,noreferrer')
+  }
+
   const difficultyColor = {
     Beginner: "bg-green-100 text-green-800",
     Intermediate: "bg-yellow-100 text-yellow-800",
@@ -57,7 +61,11 @@ export function ExperimentCard({ experiment }: ExperimentCardProps) {
           <BookOpen className="h-4 w-4 mr-2" />
           Details
         </Button>
-        <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+        <Button 
+          size="sm" 
+          className="bg-blue-600 hover:bg-blue-700"
+          onClick={handleStartExperiment}
+        >
           Start Experiment
           <ArrowRight className="h-4 w-4 ml-2" />
         </Button>

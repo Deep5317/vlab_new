@@ -6,9 +6,10 @@ export interface Experiment {
     category: string
     difficulty: "Beginner" | "Intermediate" | "Advanced"
     duration: string
-  }
+    url: string  // Add the url property
+}
   
-  export const experiments: Experiment[] = [
+export const experiments: Experiment[] = [
     {
       id: 1,
       title: "Pendulum Motion",
@@ -17,6 +18,7 @@ export interface Experiment {
       category: "Mechanics",
       difficulty: "Beginner",
       duration: "30 minutes",
+      url: "https://www.youtube.com/watch?v=V0TejHIZLV8",
     },
     {
       id: 2,
@@ -26,6 +28,7 @@ export interface Experiment {
       category: "Electricity",
       difficulty: "Beginner",
       duration: "45 minutes",
+      url: "/experiments/ohms-law",
     },
     {
       id: 3,
@@ -35,6 +38,7 @@ export interface Experiment {
       category: "Mechanics",
       difficulty: "Intermediate",
       duration: "60 minutes",
+      url: "/experiments/projectile-motion",
     },
     {
       id: 4,
@@ -44,6 +48,7 @@ export interface Experiment {
       category: "Waves",
       difficulty: "Intermediate",
       duration: "45 minutes",
+      url: "/experiments/wave-interference",
     },
     {
       id: 5,
@@ -53,6 +58,7 @@ export interface Experiment {
       category: "Electromagnetism",
       difficulty: "Advanced",
       duration: "75 minutes",
+      url: "/experiments/magnetic-fields",
     },
     {
       id: 6,
@@ -62,6 +68,7 @@ export interface Experiment {
       category: "Optics",
       difficulty: "Intermediate",
       duration: "60 minutes",
+      url: "/experiments/optics-lenses",
     },
     {
       id: 7,
@@ -71,6 +78,7 @@ export interface Experiment {
       category: "Thermodynamics",
       difficulty: "Advanced",
       duration: "90 minutes",
+      url: "/experiments/thermodynamics",
     },
     {
       id: 8,
@@ -80,7 +88,7 @@ export interface Experiment {
       category: "Quantum Physics",
       difficulty: "Advanced",
       duration: "120 minutes",
+      url: "/experiments/quantum-phenomena",
     },
-  ]
-  
-  
+]
+
