@@ -1,12 +1,21 @@
 import Link from "next/link"
 import { ArrowRight, Beaker, BookOpen, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import VLabsHeroComponent from "@/components/VLabsHeroComponent"
+
+// const imageUrls = [
+//   '/images/atom.png',
+//   '/images/molecule.png',
+//   // Add more as needed
+// ];
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
+        <VLabsHeroComponent  />
+        <div className="relative z-10">
         <section className="bg-gradient-to-b from-blue-600 to-blue-800 text-white py-20 px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="flex flex-col md:flex-row items-center gap-12">
@@ -32,7 +41,7 @@ export default function HomePage() {
                   <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-blue-400 to-blue-300 opacity-75 blur"></div>
                   <div className="relative bg-white rounded-lg overflow-hidden shadow-xl">
                     <img
-                      src="/placeholder.svg?height=400&width=600"
+                      src="/images/hero.gif"
                       alt="Physics Virtual Lab"
                       className="w-full h-auto"
                     />
@@ -42,7 +51,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
+        
         {/* Features Section */}
         <section className="py-20 px-4 bg-white">
           <div className="container mx-auto max-w-6xl">
@@ -66,6 +75,7 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        </div>
 
         {/* CTA Section */}
         <section className="py-16 px-4 bg-blue-50">
