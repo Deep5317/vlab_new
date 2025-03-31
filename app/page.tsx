@@ -2,7 +2,8 @@ import Link from "next/link"
 import { ArrowRight, Beaker, BookOpen, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import VLabsHeroComponent from "@/components/VLabsHeroComponent"
-
+import FloatingImagesHero from "@/components/FlaotingImagesHero"
+import HeroSection from "@/components/HeroSection"
 // const imageUrls = [
 //   '/images/atom.png',
 //   '/images/molecule.png',
@@ -14,7 +15,9 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         {/* Hero Section */}
-        <VLabsHeroComponent  />
+        {/* <VLabsHeroComponent  /> */}
+        {/* <FloatingImagesHero /> */}
+        <HeroSection  />
         <div className="relative z-10">
         <section className="bg-gradient-to-b from-blue-600 to-blue-800 text-white py-20 px-4">
           <div className="container mx-auto max-w-6xl">
