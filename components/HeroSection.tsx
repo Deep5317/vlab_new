@@ -165,7 +165,7 @@ const HeroSection: React.FC = () => {
   }, []);
   
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-blue-900 to-black">
+    <div className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-blue-900 to-black" style={{ height: '300px' }}>
       {/* Moving SVG Background */}
       {images.map(img => (
         <div
@@ -187,10 +187,10 @@ const HeroSection: React.FC = () => {
       {/* Centered Title */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
         <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center">
-          Physics Vlab's
+          Applied Physics
         </h1>
         <p className="text-xl md:text-2xl max-w-2xl text-center mb-8">
-          Your compelling subheading that describes your product or service
+          Virtual Lab for Physics Experiments
         </p>
         {/* <button className="bg-white text-indigo-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition-all">
           Get Started

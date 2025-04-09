@@ -12,7 +12,7 @@ export interface Experiment {
 export const experiments: Experiment[] = [
     {
       id: 1,
-      title: "IV-Characteristics",
+      title: "IV-Characteristics of Diodes",
       description: "Explore the principles of simple harmonic motion by experimenting with a virtual pendulum.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
@@ -22,7 +22,7 @@ export const experiments: Experiment[] = [
     },
     {
       id: 2,
-      title: "Numerical Aparture",
+      title: "Numerical Aperture of Optical Fiber",
       description: "Verify Ohm's Law by measuring current and voltage in various circuit configurations.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
@@ -32,7 +32,7 @@ export const experiments: Experiment[] = [
     },
     {
       id: 3,
-      title: "Wedge Shape",
+      title: "Wedge Shaped Thin Film Interference",
       description: "Analyze the trajectory of projectiles under different initial conditions and angles.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
@@ -42,7 +42,7 @@ export const experiments: Experiment[] = [
     },
     {
       id: 4,
-      title: "Zener diode",
+      title: "Zener Diode Characteristics",
       description: "Visualize and understand wave interference patterns through interactive simulations.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
@@ -63,32 +63,32 @@ export const experiments: Experiment[] = [
     {
       id: 6,
       title: "Hall Effect",
-      description: "Investigate the behavior of light through various lenses and optical instruments.",
+      description: "Investigate the Hall effect in semiconductor materials and measure carrier concentrations.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
       difficulty: "Intermediate",
       duration: "60 minutes",
-      url: "/experiments/optics-lenses",
+      url: "https://halleffect.netlify.app/",
     },
     {
       id: 7,
       title: "Planck's Constant",
-      description: "Study heat transfer and the laws of thermodynamics through virtual experiments.",
+      description: "Determine Planck's constant using the photoelectric effect with LEDs of different colors.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
       difficulty: "Advanced",
       duration: "90 minutes",
-      url: "/experiments/thermodynamics",
+      url: "https://planckconstant.netlify.app/",
     },
     {
       id: 8,
-      title: "He-Ne laser",
-      description: "Visualize and understand fundamental quantum physics concepts and experiments.",
+      title: "He-Ne Laser",
+      description: "Study the working principles of a Helium-Neon laser and its applications.",
       image: "/placeholder.svg?height=300&width=400",
       category: "Physics",
       difficulty: "Advanced",
       duration: "120 minutes",
-      url: "/experiments/quantum-phenomena",
+      url: "https://henelaser.netlify.app/",
     },
 ]
 

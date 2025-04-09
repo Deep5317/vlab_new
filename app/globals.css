@@ -120,3 +120,47 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Add these custom styles for the flip card at the end of your global CSS */
+
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Card animations and effects */
+.team-card {
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.team-card-front {
+  background: linear-gradient(to bottom, white, #f9fafb);
+}
+
+.team-card-back {
+  background: linear-gradient(135deg, #2564ac, #1a4980);
+}
+
+.card-social-icons a {
+  transition: transform 0.2s ease;
+}
+
+.card-social-icons a:hover {
+  transform: scale(1.2);
+}
