@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
+import { motion } from "framer-motion"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -40,42 +41,74 @@ export default function ContactPage() {
         subject: "",
         message: "",
       })
+      setIsSubmitting(false)
     }, 1500)
   }
 
   return (
-    <div className="min-h-screen bg-blue-50 py-12 px-4">
+    <div className="min-h-screen bg-[#efeeee] py-8 rounded-lg text-white">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <h1 className="text-4xl font-bold text-blue-800 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions or feedback? We'd love to hear from you. Get in touch with our team.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1 space-y-6">
-            <ContactInfoCard
-              icon={<Mail className="h-6 w-6 text-blue-600" />}
-              title="Email Us"
-              details={["info@vlabs.edu", "support@vlabs.edu"]}
-            />
-            <ContactInfoCard
-              icon={<Phone className="h-6 w-6 text-blue-600" />}
-              title="Call Us"
-              details={["+1 (123) 456-7890", "+1 (987) 654-3210"]}
-            />
-            <ContactInfoCard
-              icon={<MapPin className="h-6 w-6 text-blue-600" />}
-              title="Visit Us"
-              details={["123 Education St", "Science City, SC 12345", "United States"]}
-            />
+          <div className="md:col-span-1 space-y-4 min-h-[450px] flex flex-col justify-between">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <ContactInfoCard
+                icon={<Mail className="h-6 w-6 text-[#2263ae]" />}
+                title="Email Us"
+                details={["info@vlabs.edu", "support@vlabs.edu"]}
+                className="py-1"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <ContactInfoCard
+                icon={<Phone className="h-6 w-6 text-[#2263ae]" />}
+                title="Call Us"
+                details={["+1 (123) 456-7890", "+1 (987) 654-3210"]}
+                className="py-1"
+              />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <ContactInfoCard
+                icon={<MapPin className="h-6 w-6 text-[#2263ae]" />}
+                title="Visit Us"
+                details={["123 Education St", "Science City, SC 12345", "United States"]}
+                className="py-2"
+              />
+            </motion.div>
           </div>
 
-          <div className="md:col-span-2">
+          <motion.div 
+            className="md:col-span-2"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
             <Card>
               <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-11">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Your Name</Label>
@@ -98,6 +131,7 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={handleChange}
+                        suppressHydrationWarning={true}
                       />
                     </div>
                   </div>
@@ -127,23 +161,42 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-[#2263ae] hover:bg-blue-700" 
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </Button>
+                  </motion.div>
                 </form>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
   )
 }
 
-function ContactInfoCard({ icon, title, details }: { icon: React.ReactNode; title: string; details: string[] }) {
+function ContactInfoCard({ 
+  icon, 
+  title, 
+  details, 
+  className = "" 
+}: { 
+  icon: React.ReactNode; 
+  title: string; 
+  details: string[];
+  className?: string; 
+}) {
   return (
     <Card>
-      <CardContent className="p-6">
+      <CardContent className={`p-6 ${className}`}>
         <div className="flex items-start">
           <div className="mr-4 mt-1">{icon}</div>
           <div>

@@ -15,6 +15,9 @@ export function Navbar() {
     { name: "About", path: "/about" },
     { name: "Experiments", path: "/experiments" },
     { name: "Contact", path: "/contact" },
+    { name: "Team", path: "/team" },
+    { name: "Login", path: "/login" },
+    { name: "Register", path: "/register" }
   ]
 
   return (
@@ -23,7 +26,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-blue-600">Vlabs</span>
+              <span className="text-2xl font-bold text-sakec-headerBlue">Vlabs</span>
             </Link>
           </div>
 
@@ -34,8 +37,8 @@ export function Navbar() {
                 key={route.path}
                 href={route.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-blue-600",
-                  pathname === route.path ? "text-blue-600" : "text-gray-700",
+                  "text-sm font-medium transition-colors hover:text-sakec-headerBlue",
+                  pathname === route.path ? "text-sakec-headerBlue" : "text-gray-700",
                 )}
               >
                 {route.name}
@@ -60,7 +63,7 @@ export function Navbar() {
                 href={route.path}
                 className={cn(
                   "block py-2 px-3 text-base font-medium rounded-md",
-                  pathname === route.path ? "bg-blue-50 text-blue-600" : "text-gray-700 hover:bg-gray-50",
+                  pathname === route.path ? "bg-blue-50/50 text-sakec-headerBlue" : "text-gray-700 hover:bg-gray-50",
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >

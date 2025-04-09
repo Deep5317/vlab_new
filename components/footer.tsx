@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-blue-900 text-white">
+    <footer className="bg-[#2c2d2c] text-white">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -90,10 +90,10 @@ export function Footer() {
             </address>
           </div>
         </div>
-
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
-          <p>&copy; {new Date().getFullYear()} Vlabs. All rights reserved.</p>
-        </div>
+      </div>
+      
+      <div className="border-t border-pink-500 py-4 px-8 text-center text-white bg-red-500 font-bold">
+        <p>&copy; {new Date().getFullYear()} Vlabs. All rights reserved.</p>
       </div>
     </footer>
   )
