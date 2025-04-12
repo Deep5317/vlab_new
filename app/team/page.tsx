@@ -192,7 +192,7 @@ export default function TeamPage() {
   });
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#f0f4f8]">
       {/* Hero Section with animated background */}
       <div className="relative h-screen w-full overflow-hidden bg-gradient-to-b from-blue-900 to-black" style={{ height: '300px' }}>
         {/* Moving SVG Background */}

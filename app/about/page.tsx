@@ -240,8 +240,8 @@ export default function AboutPage() {
             >
               <div className="relative">
                 <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-sakec-aqua to-sakec-blue opacity-75 blur"></div>
-                <div className="relative bg-white rounded-lg overflow-hidden shadow-xl">
-                  <img src="/placeholder.svg?height=400&width=600" alt="Students using Vlabs" className="w-full h-auto" />
+                <div className="relative bg-white rounded-lg overflow-hidden">
+                  <img src="/images/about.png" alt="Students using Vlabs" className="w-full h-auto" />
                 </div>
               </div>
             </motion.div>

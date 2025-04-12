@@ -108,7 +108,7 @@ export default function ContactPage() {
           >
             <Card>
               <CardContent className="p-6">
-                <form onSubmit={handleSubmit} className="space-y-11">
+                <form onSubmit={handleSubmit} className="space-y-14">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Your Name</Label>
