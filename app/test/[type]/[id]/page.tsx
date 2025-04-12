@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { getQuestions } from '@/lib/questions'
+import { experiments } from '@/lib/data' // Add this import
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react' // Add ArrowRight
 import Link from 'next/link'
 
 export default function TestPage() {
@@ -19,12 +20,18 @@ export default function TestPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [experiment, setExperiment] = useState<any>(null)
   
   useEffect(() => {
     if (id) {
       setLoading(true)
       const questionType = type === 'pre-test' ? 'pre-test' : 'post-test'
       const questionsData = getQuestions(questionType, id)
+      
+      const experimentData = experiments.find(e => e.id === Number(id))
+      if (experimentData) {
+        setExperiment(experimentData)
+      }
       
       if (questionsData) {
         setQuestions(questionsData.questions)
@@ -67,6 +74,24 @@ export default function TestPage() {
     }
   }
   
+  const handleStartExperiment = () => {
+    if (experiment) {
+      window.open(experiment.url, '_blank', 'noopener,noreferrer')
+    } else {
+      router.push(`/experiments/${id}/theory`)
+    }
+  }
+  
+  const handleNextStep = () => {
+    if (type === 'pre-test') {
+      // After pre-test, go to theory page
+      router.push(`/experiments/${id}/theory`);
+    } else {
+      // After post-test, go back to experiments list
+      router.push('/experiments');
+    }
+  };
+
   const score = calculateScore()
 
   if (loading) {
@@ -165,16 +190,6 @@ export default function TestPage() {
                     >
                       Return to Experiments
                     </Button>
-                    
-                    {type === 'pre-test' && (
-                      <Button 
-                        onClick={() => router.push(`/test/post-test/${id}`)}
-                        variant="outline" 
-                        className="border-blue-600 text-blue-600"
-                      >
-                        Try Post-Test
-                      </Button>
-                    )}
                   </div>
                 </div>
               </Card>
@@ -197,6 +212,26 @@ export default function TestPage() {
               >
                 Submit Answers
               </Button>
+            </div>
+          )}
+          
+          {isSubmitted && (
+            <div className="mt-8 flex justify-center">
+              {type === 'pre-test' ? (
+                <Button 
+                  onClick={handleNextStep}
+                  className="bg-green-600 hover:bg-green-700 text-white"
+                >
+                  Continue to Experiment →
+                </Button>
+              ) : (
+                <Button 
+                  onClick={handleNextStep}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  Return to Experiments
+                </Button>
+              )}
             </div>
           )}
         </>
