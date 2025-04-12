@@ -26,9 +26,9 @@ export default function ExperimentsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-4xl font-bold text-blue-800 mb-4">Physics Experiments</h1>
+          <h1 className="text-4xl font-bold text-blue-800 mb-4">Experiments</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our collection of interactive virtual physics experiments designed to enhance your understanding of
+            Explore our collection of interactive applied physics virtual experiments designed to enhance your understanding of
             fundamental concepts.
           </p>
         </motion.div>

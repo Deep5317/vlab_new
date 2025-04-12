@@ -29,7 +29,7 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="md:w-1/2 space-y-6"
               >
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-sakec-blue">Virtual Physics Laboratory</h1>
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-sakec-blue">Applied Physics Virtual Laboratory</h1>
                 <p className="text-xl text-gray-600">
                   Experience physics experiments in an interactive virtual environment. Learn, explore, and discover the
                   laws of physics from anywhere.
@@ -56,7 +56,7 @@ export default function HomePage() {
                   <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-sakec-aqua to-sakec-blue opacity-75 blur"></div>
                   <div className="relative bg-white rounded-lg overflow-hidden shadow-xl">
                     <img
-                      src="/images/hero.gif"
+                      src="/images/phycover.gif"
                       alt="Physics Virtual Lab"
                       className="w-full h-auto"
                     />

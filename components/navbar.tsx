@@ -26,7 +26,11 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-sakec-headerBlue">Vlabs</span>
+              <img 
+                src="/images/LOGO.png" 
+                alt="Vlabs Logo" 
+                className="h-12" 
+              />
             </Link>
           </div>
 
