@@ -278,10 +278,10 @@ export default function AboutPage() {
           <div className="text-center mt-12">
             <Link 
               href="/team" 
-              className="inline-flex items-center px-6 py-3 rounded-md bg-sakec-blue text-white hover:bg-sakec-blue/90 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-md bg-[#2263ae] hover:bg-[#2263ae]/90 text-white shadow-md transition-all duration-200 hover:scale-105 font-medium text-lg"
             >
               Meet Our Team
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </div>
         </div>
