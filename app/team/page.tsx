@@ -327,7 +327,7 @@ function FlippableTeamCard({ member, isFlipped, onCardClick }: FlippableCardProp
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="h-[400px] w-full team-card"
+      className="w-full max-w-[320px] mx-auto h-[420px] team-card"
       onClick={(e) => {
         e.stopPropagation();
         onCardClick();
@@ -336,23 +336,26 @@ function FlippableTeamCard({ member, isFlipped, onCardClick }: FlippableCardProp
       <div className={`relative w-full h-full preserve-3d transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}`}>
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden team-card-front rounded-xl shadow-md overflow-hidden border border-gray-200">
-          <div className="h-[65%] overflow-hidden">
+          {/* Image fills entire card */}
+          <div className="w-full h-full relative">
             <img 
               src={member.image} 
               alt={member.name} 
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
+              className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105" 
             />
-          </div>
-          <div className="p-6">
-            <h3 className="text-xl font-bold text-sakec-blue">{member.name}</h3>
-            <p className="font-medium text-gray-600">{member.role}</p>
-            <p className="text-sm text-gray-500">{member.position}</p>
-          </div>
-          <div className="absolute bottom-3 right-3 text-sm text-gray-400 flex items-center">
-            <span>Click for details</span>
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+            {/* Text overlay with gradient background */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+              <h3 className="text-xl font-bold text-white">{member.name}</h3>
+              <p className="font-medium text-white/90">{member.role}</p>
+              <p className="text-sm text-white/80">{member.position}</p>
+              
+              <div className="absolute bottom-2 right-2 text-xs text-white/50 flex items-center">
+                <span>Click for details</span>
+                <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -400,10 +403,10 @@ function FlippableTeamCard({ member, isFlipped, onCardClick }: FlippableCardProp
             )}
           </div>
           
-          <div className="absolute bottom-3 right-3 text-sm text-white/60 flex items-center">
+          <div className="absolute bottom-2 right-2 text-xs text-white/50 flex items-center">
             <span>Click to flip back</span>
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
