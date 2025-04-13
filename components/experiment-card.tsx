@@ -28,15 +28,16 @@ export function ExperimentCard({ experiment }: ExperimentCardProps) {
   
   return (
     <Card
-      className="overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 flex flex-col h-[560px]"
+      className="overflow-hidden transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 flex flex-col h-[640px] w-full max-w-[340px] mx-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden aspect-square w-full">
+      {/* Fixed square image container with consistent dimensions */}
+      <div className="w-full relative overflow-hidden" style={{ width: '100%', height: '300px' }}>
         <img
           src={experiment.image}
           alt={experiment.title}
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
       </div>
 
