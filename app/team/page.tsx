@@ -5,6 +5,7 @@ import Link from "next/link"
 import React, { useEffect, useState, useRef } from 'react'
 import { teamMembers, teamCategories, TeamMember } from '@/lib/team-data'
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
+import Image from "next/image";
 
 // Define types for moving images
 interface MovingImage {
@@ -338,9 +339,11 @@ function FlippableTeamCard({ member, isFlipped, onCardClick }: FlippableCardProp
         <div className="absolute w-full h-full backface-hidden team-card-front rounded-xl shadow-md overflow-hidden border border-gray-200">
           {/* Image fills entire card */}
           <div className="w-full h-full relative">
-            <img 
+            <Image 
               src={member.image} 
-              alt={member.name} 
+              alt={member.name}
+              width={300}       
+              height={300}  
               className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105" 
             />
             {/* Text overlay with gradient background */}

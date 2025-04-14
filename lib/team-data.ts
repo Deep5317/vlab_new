@@ -1,3 +1,4 @@
+
 export interface TeamMember {
   id: number;
   name: string;
@@ -23,25 +24,25 @@ export const teamMembers: TeamMember[] = [
   // Faculty Mentors
   {
     id: 1,
-    name: "Dr. Rajendra Sawant",
-    role: "Project Director",
-    position: "HOD, Computer Science",
-    image: "/images/team/Add_IMG_PATH?height=300&width=300",
+    name: "Dr.Namrata Kkommineni",
+    role: "VLabs Project Incharge",
+    position: "VLabs Co-ordinator",
+    image: "/images/team/NamrataKkommineni.png?height=300&width=300",
     category: "Faculty",
-    bio: "Dr. Sawant has over 20 years of experience in computer science education and has led numerous educational technology projects.",
-    linkedin: "https://linkedin.com/in/username",
-    email: "rajendra.sawant@example.com"
+    bio: "17 years of teaching experience coupled with 6 years of research experience. Ph. D in Theoretical High Energy Particle Physics, University Department of Physics Mumbai University. I am very passionate about teaching and enjoy teaching intricate problems in a simple manner.",
+    linkedin: "https://www.linkedin.com/in/dr-namrata-manglani-468a9135",
+    email: "namrata.manglani@sakec.ac.in"
   },
   {
     id: 2,
-    name: "Prof. Anita Desai",
-    role: "Physics Content Advisor",
-    position: "Associate Professor, Physics",
-    image: "/images/team/Add_IMG_PATH?height=300&width=300",
+    name: "Dr. Smita Srivastava",
+    role: "Assistant Professor",
+    position: "",
+    image: "/images/team/smitasrivastava.png?height=300&width=300",
     category: "Faculty",
-    bio: "Prof. Desai specializes in experimental physics and has contributed to numerous educational resources in the field.",
-    linkedin: "https://linkedin.com/in/username",
-    email: "anita.desai@example.com"
+    bio: "I am Dr. Smita Srivastava working assistant professor in Engineering Physics.",
+    linkedin: "https://www.linkedin.com/in/smita-srivastava-5b7a101aa",
+    email: "smita.srivastava@sakec.ac.in"
   },
   
   // Technical Team
