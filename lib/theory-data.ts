@@ -38,6 +38,16 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Typical IV curve of a silicon diode showing forward and reverse bias regions",
         alt: "IV characteristics graph of a diode"
       }
+    ],
+    procedures: [
+      "Connect the diode in the circuit with the power supply, ensuring correct polarity.",
+      "Set the initial voltage to 0V and gradually increase it in small steps (0.1V increments).",
+      "For each voltage value, record the corresponding current through the diode.",
+      "Continue measurements up to approximately 1.5V in forward bias.",
+      "Reverse the diode connections to measure reverse bias characteristics.",
+      "Apply reverse voltages in steps and measure the leakage current.",
+      "Plot the current vs. voltage graph to visualize the diode characteristics.",
+      "Identify key parameters like threshold voltage and breakdown voltage from the graph."
     ]
   },
   
@@ -61,6 +71,17 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Demonstration of acceptance angle and total internal reflection in an optical fiber",
         alt: "Diagram showing light acceptance in optical fiber"
       }
+    ],
+    procedures: [
+      "Set up the optical bench with the light source, optical fiber, and a screen.",
+      "Mount the fiber firmly ensuring its end faces are properly polished.",
+      "Align the light source with one end of the fiber ensuring maximum coupling.",
+      "Place the screen at a measured distance d from the output end of the fiber.",
+      "Turn on the light source and observe the output pattern on the screen.",
+      "Measure the diameter (2r) of the light spot on the screen.",
+      "Calculate the angle θ using the formula: θ = tan⁻¹(r/d).",
+      "Calculate the numerical aperture using the formula: NA = sin(θ).",
+      "Repeat the experiment for different fiber samples if available."
     ]
   },
   
@@ -95,6 +116,17 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Interference pattern showing alternating bright and dark fringes",
         alt: "Photo of interference pattern in wedge-shaped film"
       }
+    ],
+    procedures: [
+      "Clean the glass plates thoroughly to remove dust and fingerprints.",
+      "Place two glass plates on top of each other, forming a wedge by inserting a thin paper at one end.",
+      "Set up the sodium lamp (or another monochromatic light source) to illuminate the wedge from above.",
+      "Observe the interference pattern formed by the wedge-shaped air film.",
+      "Count the number of dark fringes (N) from the point of contact to the position of the paper.",
+      "Measure the length (L) from the contact point to the position of the paper using a traveling microscope.",
+      "Measure the thickness of the paper (t) using a micrometer screw gauge.",
+      "Calculate the wavelength of light using the formula: λ = 2t/N.",
+      "Alternatively, if the wavelength is known, calculate the thickness of the paper using: t = Nλ/2."
     ]
   },
   
@@ -118,6 +150,16 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Current-voltage characteristics of a Zener diode showing breakdown region",
         alt: "IV curve of Zener diode with prominent breakdown region"
       }
+    ],
+    procedures: [
+      "Connect the Zener diode in reverse bias configuration with a series resistor.",
+      "Set the input voltage to 0V and gradually increase it in small steps.",
+      "Record the voltage across the Zener diode for each input voltage setting.",
+      "Continue measurements until the input voltage is about twice the Zener voltage.",
+      "Observe the point at which the Zener diode maintains a nearly constant voltage.",
+      "Vary the load resistance and observe how the Zener diode maintains a stable output voltage.",
+      "Plot the IV curve to visualize the sharp breakdown region characteristic of Zener diodes.",
+      "Calculate the dynamic resistance of the Zener diode in the breakdown region."
     ]
   },
   
@@ -141,6 +183,18 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Pattern of concentric Newton's rings as seen from above",
         alt: "Interference pattern showing Newton's rings"
       }
+    ],
+    procedures: [
+      "Clean the glass plate and the plano-convex lens thoroughly.",
+      "Place the glass plate on a flat surface and position the lens with its curved surface facing down.",
+      "Set up the sodium lamp to illuminate the setup from above.",
+      "Position the traveling microscope to observe the interference pattern.",
+      "Observe the concentric rings pattern formed by interference.",
+      "Measure the diameters of several dark rings (D₁, D₂, etc.).",
+      "Calculate the square of the diameters (D₁², D₂², etc.) and plot against ring number (n).",
+      "Determine the slope of the linear graph.",
+      "Calculate the radius of curvature using the formula: R = (D_n² - D_m²)/[4λ(n-m)].",
+      "Repeat the measurements for accuracy."
     ]
   },
   
@@ -164,6 +218,20 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Schematic diagram of Hall effect experiment setup",
         alt: "Hall effect experimental arrangement showing current, magnetic field, and voltage"
       }
+    ],
+    procedures: [
+      "Mount the semiconductor sample on the apparatus.",
+      "Connect the current source to the sample along its length.",
+      "Position the sample between the poles of an electromagnet perpendicular to the field.",
+      "Connect a voltmeter across the width of the sample to measure the Hall voltage.",
+      "Set the magnetic field to zero and adjust any offset voltage.",
+      "Apply a constant current through the sample.",
+      "Gradually increase the magnetic field strength and record the Hall voltage.",
+      "Reverse the magnetic field direction and repeat the measurements.",
+      "Plot the Hall voltage versus magnetic field strength.",
+      "Calculate the Hall coefficient using: R_H = (V_H × t)/(I × B).",
+      "Determine the carrier concentration using: n = 1/(e × R_H).",
+      "Calculate the carrier mobility using the measured conductivity."
     ]
   },
   
@@ -187,6 +255,19 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Spectral output of different colored LEDs used in the experiment",
         alt: "Graph showing different colored LED emission spectra"
       }
+    ],
+    procedures: [
+      "Set up the circuit with an LED, variable DC power supply, voltmeter, and microammeter.",
+      "Starting with the red LED, gradually increase voltage from zero.",
+      "Monitor the current and note the threshold voltage at which current begins to flow.",
+      "Repeat the measurement several times and take the average.",
+      "Repeat the procedure for LEDs of different colors (yellow, green, blue).",
+      "Record the wavelength of each LED from specifications or using a spectrometer.",
+      "Convert wavelengths to frequencies using: f = c/λ.",
+      "Plot threshold voltage against frequency for all LEDs.",
+      "Calculate the slope of the graph, which equals h/e.",
+      "Multiply the slope by elementary charge (e) to obtain Planck's constant.",
+      "Compare your experimental value with the accepted value."
     ]
   },
   
@@ -210,6 +291,20 @@ export const theoryContent: Record<number, TheoryContent> = {
         caption: "Schematic diagram of a Helium-Neon laser showing major components",
         alt: "Cross-section view of He-Ne laser tube and components"
       }
+    ],
+    procedures: [
+      "Familiarize yourself with the He-Ne laser components and ensure safety measures.",
+      "Connect the power supply to the laser tube containing helium-neon gas mixture.",
+      "Ensure alignment of the optical resonator with mirrors at both tube ends.",
+      "Gradually increase voltage until reaching the gas breakdown voltage.",
+      "Observe the characteristic glow discharge as electrical excitation begins.",
+      "Wait for the laser to stabilize (typically a few minutes).",
+      "Verify lasing action by observing the red beam from the partially transmitting mirror.",
+      "Measure beam diameter at different distances to calculate divergence.",
+      "Use a power meter to measure the output power of the laser beam.",
+      "Demonstrate coherence and monochromaticity using simple interference setups.",
+      "Study beam polarization using polarizers.",
+      "Follow safety protocols throughout and properly shut down when finished."
     ]
   }
 };

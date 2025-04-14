@@ -78,7 +78,7 @@ export const experiments: Experiment[] = [
       category: "Physics",
       difficulty: "Advanced",
       duration: "90 minutes",
-      url: "https://planckconstant.netlify.app/",
+      url: "https://plancksexp-vlabs.netlify.app/",
     },
     {
       id: 8,

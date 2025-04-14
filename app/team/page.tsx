@@ -5,7 +5,6 @@ import Link from "next/link"
 import React, { useEffect, useState, useRef } from 'react'
 import { teamMembers, teamCategories, TeamMember } from '@/lib/team-data'
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
-import Image from "next/image";
 
 // Define types for moving images
 interface MovingImage {
@@ -238,26 +237,29 @@ export default function TeamPage() {
             Our diverse team of educators, researchers, and developers is dedicated to creating the best virtual physics laboratory experience for students and educators worldwide.
           </p>
           
-          <div className="mb-12 flex flex-wrap justify-center gap-3">
+          <div className="mb-12 flex flex-wrap justify-center gap-4">
             {teamCategories.map((category) => {
-              // Assign different colors based on category
-              let bgColor = "bg-blue-600 hover:bg-blue-700";
-              if (category.id === "patrons") bgColor = "bg-blue-600 hover:bg-blue-700";
-              if (category.id === "management") bgColor = "bg-red-600 hover:bg-red-700";
-              if (category.id === "faculty") bgColor = "bg-purple-600 hover:bg-purple-700";
-              if (category.id === "VlabDeveloper") bgColor = "bg-green-600 hover:bg-green-700";
-              if (category.id === "WebsiteTeam") bgColor = "bg-orange-600 hover:bg-orange-700";
+              // Assign different colors with explicit hex codes instead of theme variables
+              let buttonStyle = "";
               
+              if (category.id === "Patrons") 
+                buttonStyle = "bg-[#1a73e8] text-white hover:bg-[#1565c0] border-[#1a73e8]";
+              else if (category.id === "Management") 
+                buttonStyle = "bg-[#2c5282] text-white hover:bg-[#1e3a5f] border-[#2c5282]";
+              else if (category.id === "Faculty") 
+                buttonStyle = "bg-[#4f46e5] text-white hover:bg-[#4338ca] border-[#4f46e5]";
+              else if (category.id === "VlabDeveloper") 
+                buttonStyle = "bg-[#0d9488] text-white hover:bg-[#0f766e] border-[#0d9488]";
+              else if (category.id === "WebsiteTeam") 
+                buttonStyle = "bg-[#f59e0b] text-white hover:bg-[#d97706] border-[#f59e0b]";
               
               return (
                 <button
                   key={category.id}
                   onClick={() => {
-                    // Small delay to ensure DOM is ready
                     setTimeout(() => {
                       const element = document.getElementById(category.id);
                       if (element) {
-                        // Get any fixed header height (if you have one)
                         const headerOffset = 20; 
                         const elementPosition = element.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -269,7 +271,10 @@ export default function TeamPage() {
                       }
                     }, 10);
                   }}
-                  className={`px-5 py-3 ${bgColor} text-white rounded-md transition-all hover:scale-105 shadow-md font-medium`}
+                  className={`px-6 py-3 border-2 rounded-lg shadow-sm
+                            transition-all duration-200 text-sm font-semibold tracking-wide
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50
+                            ${buttonStyle}`}
                 >
                   {category.name}
                 </button>
@@ -279,19 +284,20 @@ export default function TeamPage() {
           
           {/* Render each team category */}
           {groupedMembers.map((group) => (
-            <div key={group.id} id={group.id} className="mb-20 pt-16 -mt-16"> {/* Added id, pt-16 and -mt-16 for scroll offset */}
+            <div key={group.id} id={group.id} className="mb-20 pt-16 -mt-16"> 
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
-                className="mb-8"
+                className="mb-12"
               >
-                <h2 className="text-3xl font-bold text-center mb-3 text-sakec-blue">{group.name}</h2>
-                <p className="text-center text-sakec-dark mb-8">{group.description}</p>
+                <h2 className="text-3xl font-bold text-center mb-4 text-[#1a365d]">{group.name}</h2>
+                <div className="w-24 h-1 bg-[#1a73e8] mx-auto mb-6 rounded-full"></div>
+                <p className="text-center text-[#4a5568] mb-8 max-w-2xl mx-auto">{group.description}</p>
               </motion.div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
                 {group.members.map((member) => (
                   <FlippableTeamCard 
                     key={member.id} 
@@ -341,11 +347,9 @@ function FlippableTeamCard({ member, isFlipped, onCardClick }: FlippableCardProp
         <div className="absolute w-full h-full backface-hidden team-card-front rounded-xl shadow-md overflow-hidden border border-gray-200">
           {/* Image fills entire card */}
           <div className="w-full h-full relative">
-            <Image 
+            <img 
               src={member.image} 
-              alt={member.name}
-              width={300}       
-              height={300}  
+              alt={member.name} 
               className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105" 
             />
             {/* Text overlay with gradient background */}
