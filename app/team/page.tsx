@@ -242,10 +242,12 @@ export default function TeamPage() {
             {teamCategories.map((category) => {
               // Assign different colors based on category
               let bgColor = "bg-blue-600 hover:bg-blue-700";
+              if (category.id === "patrons") bgColor = "bg-blue-600 hover:bg-blue-700";
+              if (category.id === "management") bgColor = "bg-red-600 hover:bg-red-700";
               if (category.id === "faculty") bgColor = "bg-purple-600 hover:bg-purple-700";
               if (category.id === "VlabDeveloper") bgColor = "bg-green-600 hover:bg-green-700";
               if (category.id === "WebsiteTeam") bgColor = "bg-orange-600 hover:bg-orange-700";
-              if (category.id === "management") bgColor = "bg-red-600 hover:bg-red-700";
+              
               
               return (
                 <button

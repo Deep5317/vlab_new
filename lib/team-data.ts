@@ -4,7 +4,7 @@ export interface TeamMember {
   name: string;
   role: string;
   image: string;
-  category: "VlabDeveloper" | "Faculty" | "WebsiteTeam" | "Management";
+  category: "patrons" | "VlabDeveloper" | "Faculty" | "WebsiteTeam" | "Management";
   position: string;
   bio: string;
   linkedin?: string;
@@ -14,31 +14,82 @@ export interface TeamMember {
 
 // Group members by their categories                  
 export const teamCategories = [
+  { id: "patrons", name: "Patrons of Vlabs", description: " " },
+  { id: "management", name: "Management Team", description: "Keeping everything organized and on track" },
   { id: "faculty", name: "Faculty Mentors", description: "Our experienced faculty who guide the project" },
   { id: "VlabDeveloper", name: "Vlab Developer Team", description: "Talented students helping build our experiments" },
   { id: "WebsiteTeam", name: "Website Team", description: "Software engineers and developers behind the platform" },
-  { id: "management", name: "Management Team", description: "Keeping everything organized and on track" }
+  
 ];
 
 export const teamMembers: TeamMember[] = [
-  // Faculty Mentors
+
+  // patrons
   {
     id: 1,
+    name: "Dr. Bhavesh Patel",
+    role: "",
+    position: "Principal",
+    image: "/images/team/DrBhaveshPatel.png?height=300&width=300",
+    category: "patrons",
+    bio: "Principal, Shah & Anchor Kutcchi Engineering College.",
+    linkedin: "https://www.linkedin.com/in/profbhaveshpatel/",
+    email: ""
+  },
+  {
+    id: 2,
+    name: "Prof. Abdul Wajid Khan",
+    role: "",
+    position: "F.E. Incharge",
+    image: "/images/team/AbdulWajidKhan.png?images/team/DrBhaveshPatel.png?height=300&width=300",
+    category: "patrons",
+    bio: "First Year Engineering Incharge, Shah & Anchor Kutcchi Engineering College.",
+    linkedin: "https://www.linkedin.com/in/abdul-wajid-khan-0036127a/",
+    email: "registrar@sakec.ac.in"
+  },
+  {
+    id: 3,
+    name: "Prof. Aruna Sharma",
+    role: "",
+    position: "F.E. Deputy Incharge",
+    image: "/images/team/ArunaSharma.png?height=300&width=300",
+    category: "patrons",
+    bio: "First Year Engineering Deputy Incharge, Shah & Anchor Kutcchi Engineering College.",
+    linkedin: "",
+    email: "aruna.sharma@sakec.ac.in"
+  },
+  {
+    id: 4,
+    name: "Dr.Nilakshi Jain",
+    role: "",
+    position: "Research Cell Chair Person",
+    image: "/images/team/NilakshiJain.png?height=300&width=300",
+    category: "patrons",
+    bio: "Research Cell Chair Person, Shah & Anchor Kutcchi Engineering College.",
+    linkedin: "https://www.linkedin.com/in/dr-nilakshi-jain-7593a264/",
+    email: "nilakshi.jain@sakec.ac.in"
+  },
+  
+
+
+  // Faculty Mentors
+  {
+    id: 5,
     name: "Dr.Namrata Kkommineni",
     role: "VLabs Project Incharge",
     position: "VLabs Co-ordinator",
-    image: "/images/team/NamrataKkommineni.png?height=300&width=300",
+    image: "/images/team/NamrataKkomminen.png?height=300&width=300",
     category: "Faculty",
     bio: "17 years of teaching experience coupled with 6 years of research experience. Ph. D in Theoretical High Energy Particle Physics, University Department of Physics Mumbai University. I am very passionate about teaching and enjoy teaching intricate problems in a simple manner.",
     linkedin: "https://www.linkedin.com/in/dr-namrata-manglani-468a9135",
     email: "namrata.manglani@sakec.ac.in"
   },
   {
-    id: 2,
+    id: 6,
     name: "Dr. Smita Srivastava",
     role: "Assistant Professor",
     position: "",
-    image: "/images/team/smitasrivastava.png?height=300&width=300",
+    image: "/images/team/SmitaSrivastava.png?height=300&width=300",
     category: "Faculty",
     bio: "I am Dr. Smita Srivastava working assistant professor in Engineering Physics.",
     linkedin: "https://www.linkedin.com/in/smita-srivastava-5b7a101aa",
@@ -47,10 +98,10 @@ export const teamMembers: TeamMember[] = [
   
   // Vlab Developer Team
   {
-    id: 3,
+    id: 7,
     name: "Dilipkumar Teli ",
-    role: "Lead",
-    position: "Project Developer",
+    role: "Lead | Vlabs Developer",
+    position: "Computer Engineering | Third Year",
     image: "/images/team/DilipkumarTeli.png?height=300&width=300",
     category: "VlabDeveloper",
     bio: "Debugging by day, coding by night, crafting the future byte by byte.",
@@ -59,10 +110,10 @@ export const teamMembers: TeamMember[] = [
     email: "dilipkumar.16995@sakec.ac.in"
   },
   {
-    id: 4,
+    id: 8,
     name: "Deep Adak",
-    role: "Lead",
-    position: "Project Developer",
+    role: "Lead | Vlabs Developer",
+    position: "Computer Engineering | Third Year",
     image: "/images/team/DeepAdak.png?height=300&width=300",
     category: "VlabDeveloper",
     bio: "I am a B.Tech student with a strong interest in web development, software engineering, and emerging technologies. I enjoy building interactive and user-friendly applications that solve real-world problems and enhance the learning experience.",
@@ -71,10 +122,10 @@ export const teamMembers: TeamMember[] = [
     email: "deep.adak90@gmail.com"
   },
   {
-    id: 5,
+    id: 9,
     name: "Reshab Singh",
-    role: "Lead",
-    position: "Project Developer",
+    role: "Lead | Vlabs Developer",
+    position: "Computer Engineering | Third Year",
     image: "/images/team/ReshabSingh.png?height=300&width=300",
     category: "VlabDeveloper",
     bio: "Hi, I am reshab signh , a curious person and my passion for physics roots deeply which is why I decided to work on the Vlabs projects. The projects were a new experience for and truly made me realise that how technology can make learning physics so simple and effective.",
@@ -83,10 +134,10 @@ export const teamMembers: TeamMember[] = [
     email: "reshab.17313@sakec.ac.in"
   },
   {
-    id: 6,
+    id: 10,
     name: "Sahas Prajapati",
-    role: "Lead",
-    position: "Vlabs Developer",
+    role: "Lead | Vlabs Developer",
+    position: "Computer Engineering | Third Year",
     image: "/images/team/SahasPrajapati.png?height=300&width=300",
     category: "VlabDeveloper",
     bio: "I am a Computer Science Engineering student passionate about web development and emerging technologies. With prior experience in frontend and backend development, I aim to contribute to the Applied Physics V-Lab by building interactive and user-friendly virtual lab experiences.",
@@ -95,10 +146,10 @@ export const teamMembers: TeamMember[] = [
     email: "sahas.17383@sakec.ac.in"
   },
   {
-    id: 7,
+    id: 11,
     name: "Aryaan Gala",
-    role: "CoLead",
-    position: "Vlabs Developer",
+    role: "Co-Lead | Vlabs Developer",
+    position: "Computer Engineering | Third Year",
     image: "/images/team/AryaanGala.png?height=300&width=300",
     category: "VlabDeveloper",
     bio: "I am a passionate developer currently building Virtual Physics Labs for my college using HTML, CSS, and JavaScript, with custom illustrations created in Inkscape using SVG. My interest lies in creating interactive and visually engaging learning tools that simplify complex physics concepts for students through hands-on simulations.",
@@ -107,10 +158,10 @@ export const teamMembers: TeamMember[] = [
     email: "aryaan.17135@sakec.ac.in"
   },
   {
-    id: 8,
+    id: 12,
     name: "Mansi Shendge",
-    role: "CoLead",
-    position: "Vlabs Developer",
+    role: "CoLead | Vlabs Developer",
+    position: "Computer Engineering | Third Year",
     image: "/images/team/MansiShendge.png?height=300&width=300",
     category: "VlabDeveloper",
     bio: "I'm currently a student at Shah and anchor kutchhi engineering college, driven by a deep enthusiasm for exploring software technology. This project really helped me in applying my skills in order to create such simulations.",
@@ -121,55 +172,60 @@ export const teamMembers: TeamMember[] = [
   
   // Website Team
   {
-    id: 10,
+    id: 13,
     name: "Vighnesh Kontham",
-    role: "Member",
-    position: "Information Technology,Web developer",
+    role: "Frontend Developer",
+    position: "Information Technology | second year",
     image: "/images/team/VighneshKontham.png?height=300&width=300",
     category: "WebsiteTeam",
     bio: "I am a B.Tech student, software engineering, and emerging technologies. I enjoy building interactive and user-friendly applications that solve real-world problems and enhance the learning experience.",
     linkedin: "https://www.linkedin.com/in/vighnesh-kontham-a0378a289/",
-    github: "https://github.com/Captain-Vikram"
+    github: "https://github.com/Captain-Vikram",
+    email: "vighneshkontham@gmail.com"
   },
   {
-    id: 11,
+    id: 14,
     name: "Abhishek kanaujiya ",
-    role: "Member",
-    position: "Information Technology,Web developer",
+    role: "Frontend Developer",
+    position: "Information Technology | econd year",
     image: "/images/team/AbhishekKanaujiya.png?height=300&width=300",
     category: "WebsiteTeam",
     bio: "I'm Abhishek Kanaujiya, a passionate tech enthusiast with a strong interest in machine learning, deep learning, and full-stack development. I enjoy building impactful projects and continuously expanding my skill set. Always eager to learn, grow, and explore new technologies.",
     linkedin: "http://www.linkedin.com/in/abhishek-kanaujiya-b69701276",
-    github: "https://github.com/Abhishek-2057"
+    github: "https://github.com/Abhishek-2057",
+    email: "kavikumar0454@gmail.com"
   },
 
   {
-    id: 12,
+    id: 15,
     name: "Hetvi Sunil Bhanushali ",
-    role: "Member",
-    position: "SVG Creator",
+    role: "SVG Creator",
+    position: "Computer Engineering | First year",
     image: "/images/team/HetviSunilBhanushali.png?height=300&width=300",
     category: "WebsiteTeam",
     bio: "I'm a web development enthusiast with a keen interest in creating custom SVG graphics and building engaging, user-friendly web experiences.",
     linkedin: "https://www.linkedin.com/in/hetvi-bhanushali-0b5663344/",
-    github: ""
+    github: "",
+    email: "hetvi.bhanushali24@sakec.ac.in"
+
   },
   {
-    id: 13,
+    id: 16,
     name: "Rujuta Salvi",
-    role: "Member",
-    position: "Information Technology,Web developer",
+    role: "SVG Creator",
+    position: "Computer Engineering | First year",
     image: "/images/team/RujutaSalvi.png?height=300&width=300",
     category: "WebsiteTeam",
     bio: "I had interest in creativity.So attended the SVG lecture.It created interest in this project",
     linkedin: "https://www.linkedin.com/in/rujuta-salvi-152014330/",
-    github: ""
+    github: "",
+    email: "rujuta.salvi241@sakec.ac.in"
   },
   
   
   // Management Team
   {
-    id: 14,
+    id: 17,
     name: "Ms.Jalpa Mehta",
     role: "",
     position: "Assistant Professor",
