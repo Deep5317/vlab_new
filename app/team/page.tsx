@@ -237,21 +237,10 @@ export default function TeamPage() {
             Our diverse team of educators, researchers, and developers is dedicated to creating the best virtual physics laboratory experience for students and educators worldwide.
           </p>
           
-          <div className="mb-12 flex flex-wrap justify-center gap-4">
+          <div className="mb-12 flex flex-col md:flex-row md:flex-wrap justify-center gap-4 px-4 sm:px-6">
             {teamCategories.map((category) => {
-              // Assign different colors with explicit hex codes instead of theme variables
-              let buttonStyle = "";
-              
-              if (category.id === "Patrons") 
-                buttonStyle = "bg-[#1a73e8] text-white hover:bg-[#1565c0] border-[#1a73e8]";
-              else if (category.id === "Management") 
-                buttonStyle = "bg-[#2c5282] text-white hover:bg-[#1e3a5f] border-[#2c5282]";
-              else if (category.id === "Faculty") 
-                buttonStyle = "bg-[#4f46e5] text-white hover:bg-[#4338ca] border-[#4f46e5]";
-              else if (category.id === "VlabDeveloper") 
-                buttonStyle = "bg-[#0d9488] text-white hover:bg-[#0f766e] border-[#0d9488]";
-              else if (category.id === "WebsiteTeam") 
-                buttonStyle = "bg-[#f59e0b] text-white hover:bg-[#d97706] border-[#f59e0b]";
+              // Use a single color scheme for all buttons
+              const buttonStyle = "bg-[#1a73e8] text-white hover:bg-[#1565c0] border-[#1a73e8]";
               
               return (
                 <button
@@ -271,8 +260,8 @@ export default function TeamPage() {
                       }
                     }, 10);
                   }}
-                  className={`px-6 py-3 border-2 rounded-lg shadow-sm
-                            transition-all duration-200 text-sm font-semibold tracking-wide
+                  className={`w-full md:w-auto px-6 py-3 border-2 rounded-lg shadow-md
+                            transition-all duration-200 text-base font-bold tracking-wide
                             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50
                             ${buttonStyle}`}
                 >

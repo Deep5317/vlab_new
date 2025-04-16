@@ -17,7 +17,8 @@ import {
   ClipboardCheck,
   Menu,
   X,
-  Image
+  Image,
+  ChevronDown
 } from "lucide-react";
 
 export default function ExperimentTheoryPage() {
@@ -29,8 +30,11 @@ export default function ExperimentTheoryPage() {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [mobileNavExpanded, setMobileNavExpanded] = useState(false);
+  const [mobileContentExpanded, setMobileContentExpanded] = useState(false);
   const [activeSection, setActiveSection] = useState("aim");
   const [footerTop, setFooterTop] = useState<number | null>(null);
+  const [headerHeight, setHeaderHeight] = useState<number>(0);
   
   // Refs for each section
   const aimRef = useRef<HTMLDivElement>(null);
@@ -79,7 +83,11 @@ export default function ExperimentTheoryPage() {
     }
 
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
+      
+      // Debug
+      console.log("Window width:", window.innerWidth, "Is mobile:", isMobileView);
     };
 
     checkMobile();
@@ -106,9 +114,20 @@ export default function ExperimentTheoryPage() {
     // Function to update the sidebar position based on footer
     const updateSidebarPosition = () => {
       const footer = document.querySelector("body > footer");
+      const header = document.querySelector("body > div > header") || document.querySelector("body > header");
+      
+      // Remove console logs for production
       if (footer) {
         const footerRect = footer.getBoundingClientRect();
         setFooterTop(footerRect.top);
+      }
+      
+      if (header) {
+        const headerRect = header.getBoundingClientRect();
+        setHeaderHeight(headerRect.height || 0);
+      } else {
+        // If no header is found, use a default height
+        setHeaderHeight(60); // Use a reasonable default height
       }
     };
     
@@ -211,9 +230,13 @@ export default function ExperimentTheoryPage() {
     }] : []),
   ];
 
-  // Calculate sidebar style based on footer position
+  // Update the sidebar style object to position it better
   const sidebarStyle = {
-    bottom: footerTop ? `calc(100vh - ${footerTop}px)` : '80px'
+    top: `${Math.max(headerHeight + 20, 0)}px`, // Add 20px spacing below header
+    height: footerTop 
+      ? `calc(100vh - ${Math.max(headerHeight + 20, 0)}px - ${window.innerHeight - footerTop}px - 20px)` 
+      : `calc(100vh - ${Math.max(headerHeight + 20, 0)}px - 80px)`,
+    overflowY: "auto" as const
   };
 
   return (
@@ -221,7 +244,7 @@ export default function ExperimentTheoryPage() {
       {/* Desktop Sidebar*/}
       {!isMobile && (
         <motion.div 
-          className="bg-white shadow-lg fixed left-0 top-0 z-10 flex flex-col py-6 overflow-y-auto"
+          className="bg-white shadow-lg fixed left-0 z-20 flex flex-col py-4 overflow-y-auto rounded-tr-lg rounded-br-lg"
           style={sidebarStyle}
           initial={{ width: "70px" }}
           animate={{ 
@@ -324,89 +347,149 @@ export default function ExperimentTheoryPage() {
         </motion.div>
       )}
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button - Enhanced Visibility */}
       {isMobile && (
-        <button 
-          className="fixed top-4 left-4 z-30 bg-blue-600 text-white p-2 rounded-full shadow-lg"
-          onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-        >
-          {mobileSidebarOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="fixed top-[64px] left-0 z-30 w-full bg-white shadow-md flex items-center p-3 border-b border-gray-200">
+          <button 
+            className="flex items-center justify-center p-2 rounded-md text-gray-700 hover:bg-blue-50 transition-colors"
+            onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+          >
+            {mobileSidebarOpen ? <X size={22} /> : <Menu size={22} />}
+            <span className="ml-2 font-medium text-sakec-blue">{theoryContent.title}</span>
+          </button>
+          
+          {/* Current section indicator */}
+          <div className="ml-auto mr-2 text-sm text-gray-600">
+            <span>Current: </span>
+            <span className="font-medium text-blue-600">{contentItems.find(item => item.id === activeSection)?.label}</span>
+          </div>
+        </div>
       )}
 
-      {/* Mobile Sidebar */}
+      {/* Mobile Dropdown Menu - Overlay */}
       {isMobile && (
         <AnimatePresence>
           {mobileSidebarOpen && (
-            <>
-              <motion.div 
-                className="fixed inset-0 bg-black/50 z-20"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setMobileSidebarOpen(false)}
-              />
-              <motion.div 
-                className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-20 flex flex-col py-16"
-                initial={{ x: "-100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "-100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              >
-                <div className="flex-1 overflow-y-auto">
-                  {/* Page Navigation */}
-                  <div className="mb-6">
-                    <h3 className="px-6 text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">
-                      Navigation
-                    </h3>
-                    {navItems.map((item, index) => (
-                      <button
-                        key={index}
-                        className="w-full flex items-center px-6 py-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors"
-                        onClick={() => {
-                          setMobileSidebarOpen(false);
-                          item.onClick();
-                        }}
-                      >
-                        <span className="flex items-center justify-center w-8">
-                          {item.icon}
-                        </span>
-                        <span className="ml-4 font-medium">{item.label}</span>
-                      </button>
-                    ))}
-                  </div>
-                  
-                  {/* Content Outline */}
-                  <div>
-                    <h3 className="px-6 text-xs uppercase tracking-wider text-gray-500 font-semibold mb-2">
-                      Content
-                    </h3>
-                    {contentItems.map((item) => (
-                      <button
-                        key={item.id}
-                        className={`w-full flex items-center px-6 py-3 transition-colors ${
-                          activeSection === item.id 
-                            ? "text-blue-600 bg-blue-50 font-medium" 
-                            : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
-                        }`}
-                        onClick={item.onClick}
-                      >
-                        <span className="flex items-center justify-center w-8">
-                          {item.icon}
-                        </span>
-                        <span className="ml-4">{item.label}</span>
-                      </button>
-                    ))}
-                  </div>
+            <motion.div 
+              className="fixed inset-0 bg-black/50 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileSidebarOpen(false)}
+            />
+          )}
+        </AnimatePresence>
+      )}
+
+      {/* Mobile Dropdown Menu - Content */}
+      {isMobile && (
+        <AnimatePresence>
+          {mobileSidebarOpen && (
+            <motion.div 
+              className="fixed top-14 left-4 right-4 z-50 bg-white rounded-lg shadow-xl overflow-hidden"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 500 }}
+            >
+              {/* Navigation Section */}
+              <div className="p-2">
+                <div 
+                  className="flex items-center justify-between p-3 bg-blue-50 rounded-md mb-2 cursor-pointer"
+                  onClick={() => setMobileNavExpanded(!mobileNavExpanded)}
+                >
+                  <span className="font-medium text-blue-800">Navigation</span>
+                  <ChevronDown 
+                    className={`transition-transform duration-300 ${mobileNavExpanded ? 'rotate-180' : ''}`} 
+                    size={18} 
+                  />
                 </div>
-              </motion.div>
-            </>
+                
+                <AnimatePresence>
+                  {mobileNavExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-2 space-y-1">
+                        {navItems.map((item, index) => (
+                          <button
+                            key={index}
+                            className="w-full flex items-center p-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600 transition-colors rounded-md"
+                            onClick={() => {
+                              setMobileSidebarOpen(false);
+                              item.onClick();
+                            }}
+                          >
+                            <span className="flex items-center justify-center w-6 mr-3">
+                              {item.icon}
+                            </span>
+                            <span className="font-medium">{item.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              
+              {/* Content Section */}
+              <div className="p-2 border-t border-gray-100">
+                <div 
+                  className="flex items-center justify-between p-3 bg-blue-50 rounded-md mb-2 cursor-pointer"
+                  onClick={() => setMobileContentExpanded(!mobileContentExpanded)}
+                >
+                  <span className="font-medium text-blue-800">Jump to Section</span>
+                  <ChevronDown 
+                    className={`transition-transform duration-300 ${mobileContentExpanded ? 'rotate-180' : ''}`} 
+                    size={18} 
+                  />
+                </div>
+                
+                <AnimatePresence>
+                  {mobileContentExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-2 space-y-1">
+                        {contentItems.map((item) => (
+                          <button
+                            key={item.id}
+                            className={`w-full flex items-center p-3 transition-colors rounded-md ${
+                              activeSection === item.id 
+                                ? "text-blue-600 bg-blue-50 font-medium" 
+                                : "text-gray-600 hover:bg-blue-50 hover:text-blue-600"
+                            }`}
+                            onClick={() => {
+                              setMobileSidebarOpen(false);
+                              item.onClick();
+                            }}
+                          >
+                            <span className="flex items-center justify-center w-6 mr-3">
+                              {item.icon}
+                            </span>
+                            <span>{item.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
           )}
         </AnimatePresence>
       )}
 
       {/* Main Content with adjusted margin */}
-      <div className={`flex-1 ${!isMobile ? "ml-[70px]" : ""}`}>
+      <div className={`flex-1 ${!isMobile ? "ml-[70px]" : "mt-14"}`}>
         <div className="bg-[#efeeee] min-h-screen py-8 px-4">
           <div className="container mx-auto max-w-4xl">
             <motion.div
@@ -419,7 +502,7 @@ export default function ExperimentTheoryPage() {
               <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white">
                 <h1 className="text-3xl font-bold mb-4 text-center">{theoryContent.title}</h1>
                 
-                <div className="flex justify-center space-x-4">
+                <div className="flex flex-wrap justify-center gap-2">
                   <span className="bg-blue-500/30 px-3 py-1 rounded-full text-sm">
                     {experiment.category}
                   </span>
