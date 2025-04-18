@@ -191,6 +191,22 @@ export default function TeamPage() {
     };
   });
 
+  // Add state for active category
+  const [activeCategory, setActiveCategory] = useState<string>("Patrons");
+
+  // Filter members based on active category
+  const filteredMembers = teamCategories.filter(category => 
+    category.id === activeCategory
+  ).map(category => {
+    return {
+      ...category,
+      members: teamMembers.filter(member => 
+        member.category.toLowerCase() === category.id.toLowerCase()
+      )
+    };
+  });
+
+  // Update the buttons section to use the new state
   return (
     <div className="min-h-screen bg-[#f0f4f8]">
       {/* Hero Section with animated background */}
@@ -239,27 +255,15 @@ export default function TeamPage() {
           
           <div className="mb-12 flex flex-col md:flex-row md:flex-wrap justify-center gap-4 px-4 sm:px-6">
             {teamCategories.map((category) => {
-              // Use a single color scheme for all buttons
-              const buttonStyle = "bg-[#1a73e8] text-white hover:bg-[#1565c0] border-[#1a73e8]";
+              const isActive = activeCategory === category.id;
+              const buttonStyle = isActive 
+                ? "bg-[#1565c0] text-white border-[#1565c0]"
+                : "bg-[#1a73e8] text-white hover:bg-[#1565c0] border-[#1a73e8]";
               
               return (
                 <button
                   key={category.id}
-                  onClick={() => {
-                    setTimeout(() => {
-                      const element = document.getElementById(category.id);
-                      if (element) {
-                        const headerOffset = 20; 
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: "smooth"
-                        });
-                      }
-                    }, 10);
-                  }}
+                  onClick={() => setActiveCategory(category.id)}
                   className={`w-full md:w-auto px-6 py-3 border-2 rounded-lg shadow-md
                             transition-all duration-200 text-base font-bold tracking-wide
                             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-opacity-50
@@ -271,9 +275,9 @@ export default function TeamPage() {
             })}
           </div>
           
-          {/* Render each team category */}
-          {groupedMembers.map((group) => (
-            <div key={group.id} id={group.id} className="mb-20 pt-16 -mt-16"> 
+          {/* Render only the active category */}
+          {filteredMembers.map((group) => (
+            <div key={group.id} id={group.id} className="mb-20"> 
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
@@ -286,7 +290,15 @@ export default function TeamPage() {
                 <p className="text-center text-[#4a5568] mb-8 max-w-2xl mx-auto">{group.description}</p>
               </motion.div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              <div className={`grid grid-cols-1 ${
+                group.members.length > 4 
+                  ? 'md:grid-cols-2 lg:grid-cols-3' 
+                  : 'md:grid-cols-2'
+                } gap-x-8 gap-y-12 justify-items-center ${
+                group.members.length > 4 
+                  ? 'max-w-6xl' 
+                  : 'max-w-4xl'
+                } mx-auto`}>
                 {group.members.map((member) => (
                   <FlippableTeamCard 
                     key={member.id} 

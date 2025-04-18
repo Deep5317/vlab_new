@@ -18,31 +18,64 @@ export default function ContactPage() {
     subject: "",
     message: "",
   })
-
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success("Message Sent", {
-        description: "Thank you for contacting us. We'll get back to you soon!",
-      })
+    
+    setIsLoading(true)
+    try {
+      const emailData = {
+        subject: `${formData.subject}`,
+        text: `
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Message: ${formData.message}
+        `,
+        html: `
+          <div style="font-family: Arial, sans-serif; padding: 20px;">
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Message:</strong></p>
+            <p style="background-color: #f5f5f5; padding: 15px; border-radius: 5px;">
+              ${formData.message.replace(/\n/g, '<br>')}
+            </p>
+          </div>
+        `
+      };
+  
+      const response = await fetch('/api/contactEmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+  
+      toast.success("Thank you for your message! We'll get back to you soon.");
       setFormData({
         name: "",
         email: "",
-        subject: "",
+        subject:"",
         message: "",
-      })
-      setIsSubmitting(false)
-    }, 1500)
+      });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message. Please try again.');
+    }finally {
+    setIsLoading(false)
+  }
   }
 
   return (
@@ -70,7 +103,7 @@ export default function ContactPage() {
               <ContactInfoCard
                 icon={<Mail className="h-6 w-6 text-[#2263ae]" />}
                 title="Email Us"
-                details={["info@vlabs.edu", "support@vlabs.edu"]}
+                details={["research@sakec.ac.in", "nitin.karotya@sakec.ac.in"]}
                 className="py-1"
               />
             </motion.div>
@@ -82,7 +115,7 @@ export default function ContactPage() {
               <ContactInfoCard
                 icon={<Phone className="h-6 w-6 text-[#2263ae]" />}
                 title="Call Us"
-                details={["+1 (123) 456-7890", "+1 (987) 654-3210"]}
+                details={["+91 91372 55265"]}
                 className="py-1"
               />
             </motion.div>
@@ -94,7 +127,7 @@ export default function ContactPage() {
               <ContactInfoCard
                 icon={<MapPin className="h-6 w-6 text-[#2263ae]" />}
                 title="Visit Us"
-                details={["123 Education St", "Science City, SC 12345", "United States"]}
+                details={["Shah & Anchor Kutchhi Engineering College,", "W.T.Patil marg, Chembur,", "Mumbai-400088."]}
                 className="py-2"
               />
             </motion.div>
@@ -168,9 +201,9 @@ export default function ContactPage() {
                     <Button 
                       type="submit" 
                       className="w-full bg-[#2263ae] hover:bg-blue-700" 
-                      disabled={isSubmitting}
+                      disabled={isLoading}
                     >
-                      {isSubmitting ? "Sending..." : "Send Message"}
+                      {isLoading ? "Sending..." : "Send Message"}
                     </Button>
                   </motion.div>
                 </form>

@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-[#2c2d2c] text-white">
+    <footer className="bg-blue-900 text-white">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
@@ -18,7 +18,7 @@ export function Footer() {
                 <Twitter className="h-5 w-5" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-blue-200 hover:text-white">
+              <Link href="https://www.instagram.com/research_sakec/" target="_blank" className="text-blue-200 hover:text-white">
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
@@ -84,18 +84,17 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <address className="not-italic text-blue-200">
-              <p>Email: info@vlabs.edu</p>
-              <p>Phone: +1 (123) 456-7890</p>
-              <p>Address: 123 Education St, Science City, SC 12345</p>
+              <p><b>Email</b>: research@sakec.ac.in</p>
+              <p><b>Phone</b>: +91 91372 55265</p>
+              <p><b>Address</b>: Shah & Anchor Kutchhi Engineering College, W.T.Patil marg, Chembur, Mumbai-400088.</p>
             </address>
           </div>
         </div>
-      </div>
-      
-      <div className="border-t border-pink-500 py-4 px-8 text-center text-white bg-red-500 font-bold">
-        <p>&copy; {new Date().getFullYear()} Vlabs. All rights reserved.</p>
+
+        <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-300">
+          <p>&copy; {new Date().getFullYear()} Vlabs. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   )
 }
-
