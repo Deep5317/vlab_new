@@ -68,7 +68,7 @@ export const experiments: Experiment[] = [
       category: "Physics",
       difficulty: "Intermediate",
       duration: "60 minutes",
-      url: "https://halleffect.netlify.app/",
+      url: "https://hall-effect-vlabs-final.netlify.app/",
     },
     {
       id: 7,
