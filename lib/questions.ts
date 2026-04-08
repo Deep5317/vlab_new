@@ -250,6 +250,36 @@ export const preTestQuestions: Record<string, ExperimentQuestions> = {
         answer: "Scientific research"
       }
     ]
+  },
+  "9": {
+    experiment: "Malus Law",
+    questions: [
+      {
+        question: "In classical physics, light is best described as:",
+        options: ["A stream of particles", "A continuous wave", "Discrete energy packets", "A stationary field"],
+        answer: "A continuous wave"
+      },
+      {
+        question: "In the quantum picture, light consists of:",
+        options: ["Waves only", "Continuous energy", "Photons", "Vibrations in air"],
+        answer: "Photons"
+      },
+      {
+        question: "What does light intensity represent in classical theory?",
+        options: ["Number of photons", "Energy per photon", "Amplitude squared of the wave", "Frequency of light"],
+        answer: "Amplitude squared of the wave"
+      },
+      {
+        question: "A classical detector measures:",
+        options: ["Individual photons", "Continuous energy flow", "Probability of detection", "Quantum states"],
+        answer: "Continuous energy flow"
+      },
+      {
+        question: "In quantum mechanics, the detection of light is:",
+        options: ["Continuous", "Deterministic", "Discrete", "Impossible"],
+        answer: "Discrete"
+      }
+    ]
   }
 };
 
@@ -492,6 +522,36 @@ export const postTestQuestions: Record<string, ExperimentQuestions> = {
         question: "Active medium of He-Ne laser is in...",
         options: ["Gas phase", "Solid phase", "Liquid phase", "Plasma"],
         answer: "Gas phase"
+      }
+    ]
+  },
+  "9": {
+    experiment: "Malus Law",
+    questions: [
+      {
+        question: "In classical physics, light is best described as:",
+        options: ["A stream of particles", "A continuous wave", "Discrete energy packets", "A stationary field"],
+        answer: "A continuous wave"
+      },
+      {
+        question: "In the quantum picture, light consists of:",
+        options: ["Waves only", "Continuous energy", "Photons", "Vibrations in air"],
+        answer: "Photons"
+      },
+      {
+        question: "What does light intensity represent in classical theory?",
+        options: ["Number of photons", "Energy per photon", "Amplitude squared of the wave", "Frequency of light"],
+        answer: "Amplitude squared of the wave"
+      },
+      {
+        question: "A classical detector measures:",
+        options: ["Individual photons", "Continuous energy flow", "Probability of detection", "Quantum states"],
+        answer: "Continuous energy flow"
+      },
+      {
+        question: "In quantum mechanics, the detection of light is:",
+        options: ["Continuous", "Deterministic", "Discrete", "Impossible"],
+        answer: "Discrete"
       }
     ]
   }

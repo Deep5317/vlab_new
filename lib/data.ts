@@ -90,5 +90,15 @@ export const experiments: Experiment[] = [
       duration: "120 minutes",
       url: "https://henelaser.netlify.app/",
     },
+    {
+      id: 9,
+      title: "Malus Law (Classical and Quantum)",
+      description: "Study the working principles of Malus Law in classical and quantum physics and its applications.",
+      image: "/images/experiments/ML.png",
+      category: "Physics",
+      difficulty: "Advanced",
+      duration: "120 minutes",
+      url: "https://malus-law-vlab.vercel.app/",
+    },
 ]
 

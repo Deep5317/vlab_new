@@ -306,6 +306,31 @@ export const theoryContent: Record<number, TheoryContent> = {
       "Study beam polarization using polarizers.",
       "Follow safety protocols throughout and properly shut down when finished."
     ]
+  },
+  // Malus Law Experiment (ID 9)
+  9: {
+    title: "Malus Law",
+    aim: "To study the polarization of light and verify Malus's Law.",
+    theory: [
+      "Classical Description According to classical wave optics, when plane-polarized light passes through an analyzer, the transmitted intensity I is given by Malus’ law: I = I₀ cos²θ where: I₀ = intensity when polarizer and analyzer are aligned θ = angle between transmission axes of polarizer and analyzer. Quantum Interpretation (Conceptual) When light is treated as a stream of individual photons: Each photon either passes the analyzer or is absorbed The detector records discrete detection events (clicks) The detector current is proportional to the number of photons detected In this view, Malus’ law represents the probability that a single photon passes the analyzer: P(photon transmitted) = cos²θ Thus, the same formula applies, but the meaning changes from continuous intensity to probabilistic transmission."
+    ],
+    // images: [
+    //   {
+    //     src: "/experiments/he-ne-laser/laser-schematic.png",
+    //     caption: "Schematic diagram of a Helium-Neon laser showing major components",
+    //     alt: "Cross-section view of He-Ne laser tube and components"
+    //   }
+    // ],
+    procedures: [
+      "Align the laser/photon source, polarizer, analyzer, and detector along a straight line on the optical bench.",
+      "Fix the polarizer at a reference orientation.",
+      "Set the analyzer axis parallel to the polarizer (θ = 0°).",
+      "Switch on the source and record the detector current I₀.",
+      "Rotate the analyzer in steps of 10°.",
+      "At each angle θ, record the detector current I.",
+      "Continue measurements up to θ = 90°. ",
+      "Ensure stable readings before recording values."
+    ]
   }
 };
 
