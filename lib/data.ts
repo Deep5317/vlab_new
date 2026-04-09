@@ -98,7 +98,7 @@ export const experiments: Experiment[] = [
       category: "Physics",
       difficulty: "Advanced",
       duration: "120 minutes",
-      url: "https://malus-law-vlab.vercel.app/",
+      url: "https://malus-law-vlab-project.vercel.app/",
     },
 ]
 
